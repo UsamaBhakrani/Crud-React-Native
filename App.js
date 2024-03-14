@@ -3,14 +3,14 @@ import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import IndexScreen from "./src/screens/IndexScreen";
-import { BlogProvider } from "./src/context/BlogContext";
+import { Provider } from "./src/context/BlogContext";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <BlogProvider>
+      <Provider>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen
             name="Home"
@@ -18,7 +18,7 @@ export default function App() {
             component={IndexScreen}
           />
         </Stack.Navigator>
-      </BlogProvider>
+      </Provider>
     </NavigationContainer>
   );
 }
