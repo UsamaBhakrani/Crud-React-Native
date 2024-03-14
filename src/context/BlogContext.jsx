@@ -1,11 +1,18 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useReducer } from "react";
+import { CREATE_BLOG_POST, DELETE_BLOG_POST, EDIT_BLOG_POST } from "../actions";
+import blogReducer from "../reducers/blogReducer";
 
 export const BlogContext = createContext();
 
 export const BlogProvider = ({ children }) => {
-  const blogPosts = [{ title: "Blog Post #1" }, { title: "Blog Post #2" }];
+  const [blogPosts, dispatch] = useReducer(blogReducer, []);
+
+  const createBlogPost = () => {
+    dispatch({ type: CREATE_BLOG_POST });
+  };
+
   return (
-    <BlogContext.Provider value={{ blogPosts }}>
+    <BlogContext.Provider value={{ data: blogPosts, createBlogPost }}>
       {children}
     </BlogContext.Provider>
   );

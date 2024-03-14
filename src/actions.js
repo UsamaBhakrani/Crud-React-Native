@@ -1,0 +1,3 @@
+export const DELETE_BLOG_POST = "DELETE BLOG POST";
+export const CREATE_BLOG_POST = "CREATE BLOG POST";
+export const EDIT_BLOG_POST = "EDIT BLOG POST";
