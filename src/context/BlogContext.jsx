@@ -3,9 +3,11 @@ import { createContext, useContext } from "react";
 export const BlogContext = createContext();
 
 export const BlogProvider = ({ children }) => {
-  const number = 15;
+  const blogPosts = [{ title: "Blog Post #1" }, { title: "Blog Post #2" }];
   return (
-    <BlogContext.Provider value={{ number }}>{children}</BlogContext.Provider>
+    <BlogContext.Provider value={{ blogPosts }}>
+      {children}
+    </BlogContext.Provider>
   );
 };
 
