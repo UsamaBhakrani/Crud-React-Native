@@ -8,8 +8,14 @@ const createBlogPost = (dispatch) => {
   };
 };
 
+const deleteBlogPost = (dispatch) => {
+  return () => {
+    dispatch({ type: DELETE_BLOG_POST,payload:1 });
+  };
+};
+
 export const { Context, Provider } = createDataContext(
   blogReducer,
-  { createBlogPost },
+  { createBlogPost, deleteBlogPost },
   []
 );

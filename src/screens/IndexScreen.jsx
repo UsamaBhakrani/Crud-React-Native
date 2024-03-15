@@ -3,7 +3,7 @@ import { Context } from "../context/BlogContext";
 import { useContext } from "react";
 import { Feather } from "@expo/vector-icons";
 const IndexScreen = () => {
-  const { state, createBlogPost } = useContext(Context);
+  const { state, createBlogPost, deleteBlogPost } = useContext(Context);
 
   return (
     <View style={styles.container}>
@@ -15,7 +15,12 @@ const IndexScreen = () => {
           return (
             <View style={styles.row}>
               <Text style={styles.text}>{item.title}</Text>
-              <Feather name="trash-2" size={24} color="black" />
+              <Feather
+                name="trash-2"
+                size={24}
+                color="black"
+                onPress={() => deleteBlogPost(item.id)}
+              />
             </View>
           );
         }}
