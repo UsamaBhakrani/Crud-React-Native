@@ -10,6 +10,7 @@ const ShowScreen = ({ route: { params } }) => {
     <View>
       <Text>{params.id}</Text>
       <Text>{params.title}</Text>
+      <Text>{params.content}</Text>
 
       <Text>{blogPost.id}</Text>
       <Text>{blogPost.title}</Text>

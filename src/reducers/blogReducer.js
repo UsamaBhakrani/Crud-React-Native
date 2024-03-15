@@ -4,7 +4,11 @@ export default blogReducer = (state, action) => {
   if (action.type === CREATE_BLOG_POST) {
     return [
       ...state,
-      { id: state.length + 1, title: `Blog Post # ${state.length + 1}` },
+      {
+        id: Math.floor(Math.random() * 99999),
+        title: action.payload.title,
+        content: action.payload.content,
+      },
     ];
   }
   if (action.type === DELETE_BLOG_POST) {

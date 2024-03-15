@@ -3,8 +3,9 @@ import blogReducer from "../reducers/blogReducer";
 import createDataContext from "./createDataContext";
 
 const createBlogPost = (dispatch) => {
-  return () => {
-    dispatch({ type: CREATE_BLOG_POST });
+  return async (title, content, callback) => {
+    await dispatch({ type: CREATE_BLOG_POST, payload: { title, content } });
+    callback();
   };
 };
 

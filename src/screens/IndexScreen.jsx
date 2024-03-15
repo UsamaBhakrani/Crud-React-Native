@@ -24,16 +24,22 @@ const IndexScreen = ({ navigation: { navigate } }) => {
       </TouchableOpacity>
       <FlatList
         data={state}
-        keyExtractor={(state) => state.title}
+        keyExtractor={(state) => state.id}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
               onPress={() =>
-                navigate("Show", { id: item.id, title: item.title })
+                navigate("Show", {
+                  id: item.id,
+                  title: item.title,
+                  content: item.content,
+                })
               }
             >
               <View style={styles.row}>
-                <Text style={styles.text}>{item.title}</Text>
+                <Text style={styles.text}>
+                  {item.title} / {item.content}
+                </Text>
                 <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
                   <Feather name="trash-2" size={24} color="black" />
                 </TouchableOpacity>
@@ -51,7 +57,9 @@ const styles = StyleSheet.create({
     fontSize: 19,
     color: "black",
   },
-  container: {},
+  container: {
+    flex: 1,
+  },
   row: {
     flexDirection: "row",
     justifyContent: "space-between",
