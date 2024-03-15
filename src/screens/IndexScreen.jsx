@@ -15,13 +15,13 @@ const IndexScreen = ({ navigation: { navigate } }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.addButton}
         title="Add Blog Post"
         onPress={createBlogPost}
       >
         <Text style={styles.buttonText}>Add Blog Post</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <FlatList
         data={state}
         keyExtractor={(state) => state.id}
