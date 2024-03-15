@@ -1,4 +1,11 @@
-import { Button, FlatList, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import { Context } from "../context/BlogContext";
 import { useContext } from "react";
 import { Feather } from "@expo/vector-icons";
@@ -15,12 +22,9 @@ const IndexScreen = () => {
           return (
             <View style={styles.row}>
               <Text style={styles.text}>{item.title}</Text>
-              <Feather
-                name="trash-2"
-                size={24}
-                color="black"
-                onPress={() => deleteBlogPost(item.id)}
-              />
+              <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                <Feather name="trash-2" size={24} color="black" />
+              </TouchableOpacity>
             </View>
           );
         }}
@@ -38,7 +42,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingVertical: 20,
+    padding: 15,
     borderTopWidth: 1,
     borderColor: "gray",
   },

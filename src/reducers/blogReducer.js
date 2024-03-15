@@ -8,8 +8,7 @@ export default blogReducer = (state, action) => {
     ];
   }
   if (action.type === DELETE_BLOG_POST) {
-    const newState = state.filter((item) => item.id !== action.payload);
-    return [...newState];
+    return state.filter((item) => item.id !== action.payload);
   }
   return state;
 };

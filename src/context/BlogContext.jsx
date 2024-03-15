@@ -9,8 +9,8 @@ const createBlogPost = (dispatch) => {
 };
 
 const deleteBlogPost = (dispatch) => {
-  return () => {
-    dispatch({ type: DELETE_BLOG_POST,payload:1 });
+  return (id) => {
+    dispatch({ type: DELETE_BLOG_POST, payload: id });
   };
 };
 
