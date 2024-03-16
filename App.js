@@ -7,7 +7,7 @@ import { Provider } from "./src/context/BlogContext";
 import ShowScreen from "./src/screens/ShowScreen";
 import CreateScreen from "./src/screens/CreateScreen";
 import { Feather } from "@expo/vector-icons";
-
+import EditScreen from "./src/screens/EditScreen";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -29,13 +29,33 @@ export default function App() {
           />
           <Stack.Screen
             name="Show"
-            options={{ title: "Post" }}
+            options={({ navigation: { navigate }, route: { params } }) => ({
+              headerTitle: "Post",
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() =>
+                    navigate("Edit", {
+                      id: params.id,
+                      title: params.title,
+                      content: params.content,
+                    })
+                  }
+                >
+                  <Feather name="edit" size={28} color="black" />
+                </TouchableOpacity>
+              ),
+            })}
             component={ShowScreen}
           />
           <Stack.Screen
             name="Create"
             options={{ title: "Create Post" }}
             component={CreateScreen}
+          />
+          <Stack.Screen
+            name="Edit"
+            options={{ title: "Edit Post" }}
+            component={EditScreen}
           />
         </Stack.Navigator>
       </Provider>

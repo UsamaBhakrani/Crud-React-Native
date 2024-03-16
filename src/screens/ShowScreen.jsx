@@ -11,7 +11,6 @@ const ShowScreen = ({ route: { params } }) => {
       <Text>{params.id}</Text>
       <Text>{params.title}</Text>
       <Text>{params.content}</Text>
-
       <Text>{blogPost.id}</Text>
       <Text>{blogPost.title}</Text>
     </View>
