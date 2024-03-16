@@ -29,15 +29,20 @@ export default function App() {
           />
           <Stack.Screen
             name="Show"
-            options={({ navigation: { navigate }, route: { params } }) => ({
+            options={({
+              navigation: { navigate },
+              route: {
+                params: { id, title, content },
+              },
+            }) => ({
               headerTitle: "Post",
               headerRight: () => (
                 <TouchableOpacity
                   onPress={() =>
                     navigate("Edit", {
-                      id: params.id,
-                      title: params.title,
-                      content: params.content,
+                      id,
+                      title,
+                      content,
                     })
                   }
                 >

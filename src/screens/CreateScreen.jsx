@@ -1,4 +1,11 @@
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { Context } from "../context/BlogContext";
 import { useContext, useState } from "react";
 
@@ -26,12 +33,16 @@ const CreateScreen = ({ navigation: { navigate } }) => {
         autoCorrect={false}
         onChangeText={(text) => setContent(text)}
       />
-      <Button
-        title="Add Blog Post"
-        onPress={() => {
-          createBlogPost(title, content, () => navigate("Home"));
-        }}
-      />
+      <View>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            createBlogPost(title, content, () => navigate("Home"));
+          }}
+        >
+          <Text>Add Blog Post</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -48,7 +59,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     fontSize: 20,
     paddingHorizontal: 10,
-    backgroundColor: "gray",
+    backgroundColor: "lightgray",
+  },
+  button: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: 50,
+    marginVertical: 50,
+    marginHorizontal: 50,
+    borderRadius: 10,
+    backgroundColor: "dodgerblue",
+    color: "white",
   },
 });
 
