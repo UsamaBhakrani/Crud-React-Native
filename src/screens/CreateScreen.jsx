@@ -4,7 +4,13 @@ import BlogPostForm from "../components/BlogPostForm";
 
 const CreateScreen = ({ navigation: { navigate } }) => {
   const { createBlogPost } = useContext(Context);
-  return <BlogPostForm />;
+  return (
+    <BlogPostForm
+      onSubmit={(title, content) => {
+        createBlogPost(title, content, () => navigate("Home"));
+      }}
+    />
+  );
 };
 
 export default CreateScreen;

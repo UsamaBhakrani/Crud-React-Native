@@ -15,11 +15,9 @@ export default blogReducer = (state, action) => {
     return state.filter((item) => item.id !== action.payload);
   }
   if (action.type === EDIT_BLOG_POST) {
-    return {
-      ...state,
-      title: action.payload.title,
-      content: action.payload.content,
-    };
+    return state.map((blogPost) => {
+      return blogPost.id === action.payload.id ? action.payload : blogPost;
+    });
   }
   return state;
 };

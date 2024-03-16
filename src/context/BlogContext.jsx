@@ -16,8 +16,8 @@ const deleteBlogPost = (dispatch) => {
 };
 
 const editBlogPost = (dispatch) => {
-  return async (title, content, callback) => {
-    await dispatch({ type: EDIT_BLOG_POST, payload: { title, content } });
+  return async (id, title, content,callback) => {
+    await dispatch({ type: EDIT_BLOG_POST, payload: { id, title, content } });
     callback();
   };
 };
