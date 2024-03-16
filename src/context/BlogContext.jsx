@@ -15,8 +15,15 @@ const deleteBlogPost = (dispatch) => {
   };
 };
 
+const editBlogPost = (dispatch) => {
+  return async (title, content, callback) => {
+    await dispatch({ type: EDIT_BLOG_POST, payload: { title, content } });
+    callback();
+  };
+};
+
 export const { Context, Provider } = createDataContext(
   blogReducer,
-  { createBlogPost, deleteBlogPost },
-  []
+  { createBlogPost, deleteBlogPost, editBlogPost },
+  [{ id: 1, title: "Test", content: "Test Content" }]
 );

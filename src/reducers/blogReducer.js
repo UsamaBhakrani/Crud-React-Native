@@ -14,5 +14,12 @@ export default blogReducer = (state, action) => {
   if (action.type === DELETE_BLOG_POST) {
     return state.filter((item) => item.id !== action.payload);
   }
+  if (action.type === EDIT_BLOG_POST) {
+    return {
+      ...state,
+      title: action.payload.title,
+      content: action.payload.content,
+    };
+  }
   return state;
 };
