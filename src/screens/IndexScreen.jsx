@@ -7,11 +7,15 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Context } from "../context/BlogContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Feather } from "@expo/vector-icons";
 
 const IndexScreen = ({ navigation: { navigate } }) => {
-  const { state, deleteBlogPost,getBlogPosts } = useContext(Context);
+  const { state, deleteBlogPost, getBlogPosts } = useContext(Context);
+
+  useEffect(() => {
+    getBlogPosts();
+  }, []);
 
   return (
     <View style={styles.container}>
