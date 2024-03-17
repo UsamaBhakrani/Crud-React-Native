@@ -1,6 +1,14 @@
-import { CREATE_BLOG_POST, DELETE_BLOG_POST, EDIT_BLOG_POST } from "../actions";
+import {
+  CREATE_BLOG_POST,
+  DELETE_BLOG_POST,
+  EDIT_BLOG_POST,
+  GET_BLOG_POST,
+} from "../actions";
 
 export default blogReducer = (state, action) => {
+  if (action.type === GET_BLOG_POST) {
+    return action.payload;
+  }
   if (action.type === CREATE_BLOG_POST) {
     return [
       ...state,

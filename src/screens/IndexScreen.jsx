@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { Feather } from "@expo/vector-icons";
 
 const IndexScreen = ({ navigation: { navigate } }) => {
-  const { state, createBlogPost, deleteBlogPost } = useContext(Context);
+  const { state, deleteBlogPost,getBlogPosts } = useContext(Context);
 
   return (
     <View style={styles.container}>
