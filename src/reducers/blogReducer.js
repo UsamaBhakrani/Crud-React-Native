@@ -3,11 +3,21 @@ import {
   DELETE_BLOG_POST,
   EDIT_BLOG_POST,
   GET_BLOG_POST,
+  CREATE_BLOG_POST_ON_SERVER,
 } from "../actions";
 
 export default blogReducer = (state, action) => {
   if (action.type === GET_BLOG_POST) {
     return action.payload;
+  }
+  if (action.type === CREATE_BLOG_POST_ON_SERVER) {
+    return [
+      ...state,
+      {
+        title: action.payload.title,
+        content: action.payload.content,
+      },
+    ];
   }
   if (action.type === CREATE_BLOG_POST) {
     return [

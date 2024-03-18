@@ -1,5 +1,6 @@
 import {
   CREATE_BLOG_POST,
+  CREATE_BLOG_POST_ON_SERVER,
   DELETE_BLOG_POST,
   EDIT_BLOG_POST,
   GET_BLOG_POST,
@@ -37,8 +38,22 @@ const getBlogPosts = (dispatch) => {
   };
 };
 
+const createBlogPostOnServer = (dispatch) => {
+  return async (title, content, callback) => {
+    await jsonserver.post("/blogposts", { title, content });
+    // dispatch({ type: CREATE_BLOG_POST_ON_SERVER, payload: { title, content } });
+    callback();
+  };
+};
+
 export const { Context, Provider } = createDataContext(
   blogReducer,
-  { createBlogPost, deleteBlogPost, editBlogPost, getBlogPosts },
+  {
+    createBlogPost,
+    deleteBlogPost,
+    editBlogPost,
+    getBlogPosts,
+    createBlogPostOnServer,
+  },
   []
 );

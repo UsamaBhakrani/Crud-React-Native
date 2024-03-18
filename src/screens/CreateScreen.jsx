@@ -3,11 +3,11 @@ import { useContext } from "react";
 import BlogPostForm from "../components/BlogPostForm";
 
 const CreateScreen = ({ navigation: { navigate } }) => {
-  const { createBlogPost } = useContext(Context);
+  const { createBlogPost,createBlogPostOnServer } = useContext(Context);
   return (
     <BlogPostForm
       onSubmit={(title, content) => {
-        createBlogPost(title, content, () => navigate("Home"));
+        createBlogPostOnServer(title, content, () => navigate("Home"));
       }}
     />
   );
