@@ -4,6 +4,7 @@ import {
   EDIT_BLOG_POST,
   GET_BLOG_POST,
   CREATE_BLOG_POST_ON_SERVER,
+  DELETE_BLOG_POST_ON_SERVER,
 } from "../actions";
 
 export default blogReducer = (state, action) => {
@@ -18,6 +19,9 @@ export default blogReducer = (state, action) => {
         content: action.payload.content,
       },
     ];
+  }
+  if (action.type === DELETE_BLOG_POST_ON_SERVER) {
+    return state.filter((item) => item.id !== action.payload);
   }
   if (action.type === CREATE_BLOG_POST) {
     return [

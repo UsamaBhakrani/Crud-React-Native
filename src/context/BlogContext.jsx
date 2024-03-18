@@ -1,9 +1,11 @@
 import {
   CREATE_BLOG_POST,
-  CREATE_BLOG_POST_ON_SERVER,
   DELETE_BLOG_POST,
   EDIT_BLOG_POST,
   GET_BLOG_POST,
+  CREATE_BLOG_POST_ON_SERVER,
+  DELETE_BLOG_POST_ON_SERVER,
+  EDIT_BLOG_POST_ON_SERVER,
 } from "../actions";
 import jsonserver from "../api/jsonserver";
 import blogReducer from "../reducers/blogReducer";
@@ -41,7 +43,26 @@ const getBlogPosts = (dispatch) => {
 const createBlogPostOnServer = (dispatch) => {
   return async (title, content, callback) => {
     await jsonserver.post("/blogposts", { title, content });
-    // dispatch({ type: CREATE_BLOG_POST_ON_SERVER, payload: { title, content } });
+    callback();
+  };
+};
+
+const deleteBlogPostOnServer = (dispatch) => {
+  return async (id) => {
+    await jsonserver.delete(`/blogposts/${id}`);
+  };
+};
+
+const editBlogPostOnServer = (dispatch) => {
+  return async (id, title, content, callback) => {
+    await jsonserver.put(`/blogposts/${id}`, {
+      title,
+      content,
+    });
+    // await dispatch({
+    //   type: EDIT_BLOG_POST_ON_SERVER,
+    //   payload: { id, title, content },
+    // });
     callback();
   };
 };
@@ -54,6 +75,8 @@ export const { Context, Provider } = createDataContext(
     editBlogPost,
     getBlogPosts,
     createBlogPostOnServer,
+    deleteBlogPostOnServer,
+    editBlogPostOnServer
   },
   []
 );

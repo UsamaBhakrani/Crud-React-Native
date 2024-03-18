@@ -11,11 +11,12 @@ import { useContext, useEffect } from "react";
 import { Feather } from "@expo/vector-icons";
 
 const IndexScreen = ({ navigation: { navigate } }) => {
-  const { state, deleteBlogPost, getBlogPosts } = useContext(Context);
+  const { state, deleteBlogPost, getBlogPosts, deleteBlogPostOnServer } =
+    useContext(Context);
 
   useEffect(() => {
     getBlogPosts();
-  }, []);
+  }, [state]);
 
   return (
     <View style={styles.container}>
@@ -44,7 +45,9 @@ const IndexScreen = ({ navigation: { navigate } }) => {
                 <Text style={styles.text}>
                   {item.title} / {item.content}
                 </Text>
-                <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                <TouchableOpacity
+                  onPress={() => deleteBlogPostOnServer(item.id)}
+                >
                   <Feather name="trash-2" size={24} color="black" />
                 </TouchableOpacity>
               </View>
